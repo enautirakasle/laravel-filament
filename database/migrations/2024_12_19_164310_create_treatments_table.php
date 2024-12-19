@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('treatments', function (Blueprint $table) {
             $table->id();
+            $table->string('descripcion');
+            $table->text('notas')->nullable();
+            $table->decimal('price', 8, 2)->nullable();
+            $table->unsignedBigInteger('patient_id');
+            $table->foreign('patient_id')->references('id')->on('patients');
             $table->timestamps();
         });
     }
